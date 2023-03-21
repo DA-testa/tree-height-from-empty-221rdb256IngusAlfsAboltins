@@ -1,13 +1,14 @@
 import sys
 import threading
 import numpy
+import os
 def compute_height(n, parents):
     # Create a list to store the height of each node in the tree
     heights = [0] * n
 
-    # Find the height of each node in the tree
+  
     for i in range(n):
-        
+        # Check if the height of this node has already been computed
         if heights[i] != 0:
             continue
 
@@ -15,43 +16,49 @@ def compute_height(n, parents):
         height = 0
         node = i
         while node != -1:
-      
+
             if heights[node] != 0:
                 height += heights[node]
                 break
 
-            # Otherwise, we need to continue traversing up the tree
+          
             height += 1
             node = parents[node]
 
         # Store the height of the current node
         heights[i] = height
 
-    # Find the maximum height in the tree
+   
     max_height = max(heights)
 
     return max_height
 
 def main():
- 
-    user_input = input().strip().split('\\r\\n')
-    if user_input[0] == "F":
-        filename = "test/" + user_input[1]
-        with open(filename) as f:
+  
+
+
+    text= input().strip()
+    if text[0] == "F":
+        file_name = input().strip()
+        file_path = os.path.join('tests', file_name)
+        with open(file_path,'r') as f:
             n = int(f.readline())
             parents = numpy.array(f.readline().split(), dtype=int)
-    elif user_input[0] == "I":
-        n = int(user_input[1])
-        parents = numpy.array(user_input[2].split(), dtype=int)
+            
+    elif text[0] == "I":
+        n = int(input())
+        parents = numpy.array(input().split(), dtype=int)
     else:
-        return  # exit if input format is incorrect
+        return  
 
     # compute the height of the tree
     height = compute_height(n, parents)
 
-
+    # output the result
     print(height)
 
-sys.setrecursionlimit(10**7)  
-threading.stack_size(2**27)  
+# In Python, the default limit on recursion depth is rather low,
+
+sys.setrecursionlimit(10**7) 
+threading.stack_size(2**27)   
 threading.Thread(target=main).start()
