@@ -40,7 +40,7 @@ def main():
     text= input().strip()
     if text[0] == "F":
         file_name = input().strip()
-        file_path = os.path.join('tests', file_name)
+        file_path = os.path.join('test', file_name)
         with open(file_path,'r') as f:
             n = int(f.readline())
             parents = numpy.array(f.readline().split(), dtype=int)
