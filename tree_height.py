@@ -7,8 +7,6 @@ def compute_height(n, parents):
     heights = [0] * n
     for i in range(n):
  
-#         if heights[i] != 0:
-#             continue
 
         height = 0
         node = i
@@ -36,7 +34,7 @@ def main():
 
     text= input().strip()
     if text[0] == "F":
-        file_name = input().strip()
+        file_name = input()
         file_path = os.path.join('test', file_name)
         with open(file_path,'r') as f:
             n = int(f.readline())
