@@ -3,16 +3,13 @@ import threading
 import numpy
 import os
 def compute_height(n, parents):
-    # Create a list to store the height of each node in the tree
-    heights = [0] * n
-
   
+    heights = [0] * n
     for i in range(n):
-        # Check if the height of this node has already been computed
+ 
         if heights[i] != 0:
             continue
 
-        # Traverse up the tree until we find the root node
         height = 0
         node = i
         while node != -1:
@@ -25,7 +22,7 @@ def compute_height(n, parents):
             height += 1
             node = parents[node]
 
-        # Store the height of the current node
+   
         heights[i] = height
 
    
@@ -51,13 +48,9 @@ def main():
     else:
         return  
 
-    # compute the height of the tree
     height = compute_height(n, parents)
 
-    # output the result
     print(height)
-
-# In Python, the default limit on recursion depth is rather low,
 
 sys.setrecursionlimit(10**7) 
 threading.stack_size(2**27)   
