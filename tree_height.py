@@ -7,8 +7,8 @@ def compute_height(n, parents):
     heights = [0] * n
     for i in range(n):
  
-        if heights[i] != 0:
-            continue
+#         if heights[i] != 0:
+#             continue
 
         height = 0
         node = i
