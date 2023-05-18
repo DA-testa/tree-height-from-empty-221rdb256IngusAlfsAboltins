@@ -20,7 +20,7 @@ def compute_height(n, parents):
 
           
             height += 1
-            node = parents[node]
+            node = parents[i]
 
    
         heights[i] = height
